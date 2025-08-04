@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Property Search Term | Goodmil Construction{% endblock title %}
+{% block realestateactive %}active{% endblock realestateactive %}
+{% block searchactive %}active{% endblock searchactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/realestatesearch.css' %}">
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>Search Results For: &nbsp; {{query|truncatechars:30}}</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // <a href="{% url 'realestate' %}">REAL ESTATE</a> // {{query|truncatechars:30}}
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- PROPERTY SEARCH START  -->
+    <section class="property-search">
+        <div class="property-search-container">
+            <div class="property-search-header">
+                <div class="property-search-title">
+                    <h3>Search Results</h3>
+                    <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+                </div>
+            </div>
+            <div class="property-search-body">
+                {% if properties %}
+                <div class="property-list-boxes">
+                    {% for p in properties %}
+                    <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                        <div class="box">   
+                            <div class="property-img">
+                                <div class="property-type"><span>For {{p.sale_or_rent}}</span></div>
+                                <a href="{% url 'realestate-page' p.slug %}"><img src="{{p.main_image.url}}" alt=""></a>
+                            </div>
+                            <div class="property-desc">
+                                <h3>{{p.price}}</h3>
+                                <a href="{% url 'realestate-page' p.slug %}"><h4>{{p.title}}</h4></a>
+                                <p>{{p.sub_title}}</p>
+                                <div class="buttons">
+                                    <span><i class="fa-solid fa-table-cells-large"></i>&nbsp; {{p.area}}</span>
+                                    <a href="{% url 'realestate-page' p.slug %}">
+                                        <button>View Property</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="no-property-list">
+                    <h3>No Search Results</h3>
+                    <h4>Your Search -{{query|truncatechars:70}} - Didn't matched any of our listed properties.</h4>
+                    <h4>Suggestions:</h4>
+                    <ul>
+                        <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Make sure that all words are spelled correctly.</li>
+                        <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try different keywords.</li>
+                        <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try more general keywords.</li>
+                        <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try fewer keywords.</li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- PROPERTY SEARCH END  -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

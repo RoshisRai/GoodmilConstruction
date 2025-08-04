@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}{{blog.title}} | Goodmil Construction{% endblock title %}
+
+{% block blogactive %}active{% endblock blogactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/blogpost.css' %}">
+<meta name="keywords" content="{% with blog.categories|split:" " as blog_categories %}{% for cl in blog_categories %}{{cl}}, {% endfor %}{% endwith %}">
+<meta name="description" content="{{blog.sub_title}}">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="{{blog.title}}" />
+<meta name="og:description" content="{{blog.sub_title}}" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="{{blog.title}}" />
+<meta name="twitter:description" content="{{blog.sub_title}}" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>{{blog.title}}</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // <a href="#">BLOG</a>&nbsp; // {{blog.title}}
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- BLOG POST FIRST START  -->
+    <section class="blog-post-first">
+        <div class="blog-post-first-container">
+            <div class="blog-post-first-body">
+                <div class="blog-main">
+                    <div class="blog-main-img">
+                        <img src="{{blog.main_image.url}}" alt="">
+                    </div>
+                    <div class="blog-main-desc">
+                        <div class="blog-main-title">
+                            <h1>{{blog.title}}</h1>
+                            <p>
+                                <span><i class="fa-regular fa-calendar-days"></i>&nbsp; <em>{{blog.updated_at}}</em></span>
+                                <span><i class="fa-solid fa-user"></i>&nbsp; Posted by <strong>{{blog.author}}</strong> </span>
+                            </p>
+                        </div>
+                        <div class="blog-main-body">
+                            <p class='blog-main-sub-title'><strong>{{blog.sub_title}}</strong></p>
+                            {{blog.content|safe}}
+                        </div>
+                        <div class="blog-main-tags">
+                            {% with blog.categories|split:" " as blog_categories %}
+                            {% for cl in blog_categories %}     
+                            <span>{{cl}}</span>
+                            {% endfor %}
+                            {% endwith %}
+                        </div>
+                        <div class="blog-main-navigation">
+                            <div class="prev-button">
+                                {% if prev_blog_slug is not None %}
+                                    <a href="{% url 'blog-post' prev_blog_slug %}"><button>Previous Post</button></a>
+                                {% endif %}
+                            </div>
+                            <ul class="share-icons">
+                                <span>Share &nbsp;&nbsp; <i class="fa-solid fa-share-nodes"></i></span>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={% url 'blog-post' blog.slug %}"><i class="fa-brands fa-square-facebook"></i></a>
+                                <a href="https://pinterest.com/pin/create/button/?url={% url 'blog-post' blog.slug %}"><i class="fa-brands fa-pinterest"></i></a>
+                                <a href="https://twitter.com/intent/tweet?text={{b.title}}&url={% url 'blog-post' blog.slug %}"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={% url 'blog-post' blog.slug %}"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.reddit.com/submit?url={% url 'blog-post' blog.slug %}"><i class="fa-brands fa-reddit"></i></a>
+                            </ul>
+                            <div class="next-button">
+                                {% if next_blog_slug is not None %}
+                                    <a href="{% url 'blog-post' next_blog_slug %}"><button>Next Post</button></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="related-post">
+                        <div class="related-post-header">
+                            <h3>Related Posts</h3>
+                        </div>
+                        <div class="related-post-body">
+                            {% if related_blogs %}
+                            {% for b in related_blogs %}
+                            <div class="outer-box">
+                                <a href="{% url 'blog-post' b.slug %}">
+                                    <div class="box">
+                                        <div class="related-img">
+                                            <img src="{{b.main_image.url}}" alt="">
+                                        </div>
+                                        <div class="related-desc">
+                                            <p><em>{{b.updated_at}}</em></p>
+                                            <h2>{{b.title}}</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <h3>No Related Blogs</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-sidebar">
+                    <form action="{% url 'blog-search' %}" class="blog-search-form">
+                        <label class="fa-solid fa-magnifying-glass" for="blog-search"></label>
+                        <input type="text" name="blog-search" id="blog-search" class="blog-search" placeholder="Search Other Blogs...">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="other-posts" data-aos="fade-up" data-aos-offset="40">
+                        <h2>Recent Posts</h2>
+                        <div class="other-blogs">
+                            {% for b in other_blogs %}
+                            <a href="{% url 'blog-post' b.slug %}">
+                                <div class="other-blog">
+                                    <div class="blog-img">
+                                        <img src="{{b.main_image.url}}" alt="">
+                                    </div>
+                                    <div class="blog-desc">
+                                        <p>{{b.updated_at}}</p>
+                                        <p>{{b.title}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="news-letter" data-aos="fade-up" data-aos-offset="30">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <h2>Subscribe to our newsletter</h2>
+                        <h4>To be updated with all the latest news and properties</h4>
+                        <form action="{% url 'newsletter-subscriber' %}" method="POST" class="subscribe-form">
+                            {% csrf_token %}
+                            <input type="text" name="subscribe-email" id="subscribe-email" placeholder="Email Address">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BLOG POST FIRST END  -->
+
+    <!-- CLIENTS START  -->
+    <section class="clients-section">
+        <div class="clients-container swiper mySwiper2">
+            <div class="swiper-wrapper content">
+                <div class="swiper-slide client"><img src="img/google.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/instagram.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/facebook.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/twitter.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/uber.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/nike.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/adidas.png" alt=""></div>
+                <div class="swiper-slide client"><img src="img/about1.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <!-- CLIENTS END  -->
+
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

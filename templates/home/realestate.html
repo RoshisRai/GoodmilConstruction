@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Properties On Sale/Rent | Goodmil Construction{% endblock title %}
+{% block realestateactive %}active{% endblock realestateactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/realestate.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="Live Your Best Life: The Real Estate Properties and Interiors of Goodmil Construction">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|Properties On Sale/Rent" />
+<meta name="og:description" content="Live Your Best Life: The Real Estate Properties and Interiors of Goodmil Construction" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|Properties On Sale/Rent" />
+<meta name="twitter:description" content="Live Your Best Life: The Real Estate Properties and Interiors of Goodmil Construction" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h2>Search the property you are looking for</h2>
+            <h1>Find your perfect property</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // REAL ESTATE & PROPERTY
+            </div>
+            <form action="{% url 'realestate-search' %}" method="get" class="property-search-form">
+                <label class="fa-solid fa-magnifying-glass" for="property-search"></label>
+                <input type="text" name="property-search" id="property-search" class="property-search" placeholder="Search Property...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- REALESTATE FIRST SECTION START -->
+    <section class="realestate-first">
+        <div class="realestate-first-container">
+            <h2 id="realestateH2">Search property that you are looking for: </h2>
+            <div class="property-filter">
+                <div class="filters">
+                    <div class="select-menu-location select-menu">
+                        <div class="select-btn-location select-btn">
+                            <span class="sBtn-text-location sBtn-text"><i class="fa-solid fa-location-dot"></i>&nbsp; Location</span>
+                            <i class="fa-solid fa-angle-down turn-down"></i>
+                        </div>
+                
+                        <ul class="options-location options ">
+                           {% for pl in property_locations %}
+                            <li class="option-location option">
+                                <span class="option-text-location option-text">{{pl.name}}</span>
+                            </li>
+                           {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="select-menu-property select-menu">
+                        <div class="select-btn-property select-btn">
+                            <span class="sBtn-text-property sBtn-text"><i class="fa-solid fa-house"></i>&nbsp; Property</span>
+                            <i class="fa-solid fa-angle-down turn-down"></i>
+                        </div>
+                
+                        <ul class="options-property options">
+                            <li class="option-property option">
+                                <span class="option-text-property option-text">House</span>
+                            </li>
+                            <li class="option-property option">
+                                <span class="option-text-property option-text">Apartment</span>
+                            </li>
+                            <li class="option-property option">
+                                <span class="option-text-property option-text">Interior</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="select-menu select-menu-type">
+                        <div class="select-btn select-btn-type">
+                            <span class="sBtn-text sBtn-text-type"><i class="fa-solid fa-filter-circle-dollar"></i>&nbsp; Type</span>
+                            <i class="fa-solid fa-angle-down turn-down"></i>
+                        </div>
+                
+                        <ul class="options options-type">
+                            <li class="option option-type">
+                                <span class="option-text option-text-type">Sale</span>
+                            </li>
+                            <li class="option option-type">
+                                <span class="option-text option-text-type">Rent</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id='filterProperty' data-url="{% url 'filtered-realestate' %}" class="filter-search">
+                    <input type="hidden" id="property-location" name="property-location" value="">
+                    <input type="hidden" id="property-type" name="property-type" value="">
+                    <input type="hidden" id="property-sale-or-rent" name="property-sale-or-rent" value="">
+                    <button id="filterPropertybutton">Search &nbsp;&nbsp;<i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- REALESTATE FIRST SECTION END -->
+
+    <!-- REALESTATE PROPERTY LIST START -->
+    <section class="property-list">
+        <div class="property-list-container">
+            <div class="property-list-boxes">
+                {% for p in properties %}
+                <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                    <div class="box">   
+                        <div class="property-img">
+                            <div class="property-type"><span>For {{p.sale_or_rent}}</span></div>
+                            <a href="{% url 'realestate-page' p.slug %}"><img src="{{p.main_image.url}}" alt=""></a>
+                        </div>
+                        <div class="property-desc">
+                            <h3>{{p.price}}</h3>
+                            <a href="{% url 'realestate-page' p.slug %}"><h4>{{p.title}}</h4></a>
+                            <p>{{p.sub_title}}</p>
+                            <div class="buttons">
+                                <span><i class="fa-solid fa-table-cells-large"></i>&nbsp; {{p.area}}</span>
+                                <a href="{% url 'realestate-page' p.slug %}">
+                                    <button>View Property</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.last %}
+                <input type="hidden" id="lastPropertyId" data-last-id="{{p.id}}" data-url="{% url 'add-to-properties' %}" data-item="hidden">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="load-more-properties">
+                <div class="button">
+                    <button id='loadMoreProperties'>Load More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- REALESTATE PROPERTY LIST END -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+<script src="{% static 'js/realestateFilter.js' %}"></script>
+<script>
+    $(()=>{
+        $('#filterPropertybutton').on('click', function(){
+            console.log("hello world")
+            let url = $('#filterProperty').attr('data-url')
+            let propertyLocation = $('#property-location').attr('value')
+            let propertyType = $('#property-type').attr('value')
+            let propertySaleOrRent = $('#property-sale-or-rent').attr('value')
+            console.log(propertyLocation)
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    propertyLocation: propertyLocation,
+                    propertyType: propertyType,
+                    propertySaleOrRent: propertySaleOrRent
+                },
+                success: function(data) {
+                    if(data.properties){
+                        let properties = data.properties
+                        $('.property-list-boxes').empty()
+                        $('.load-more-properties').remove()
+                        $('#realestateH2').text("Search property that you are looking for:")
+                        if (jQuery.isEmptyObject(properties)){
+                            $('.property-list-boxes').append('<h2>No matching properties</h2>')
+                        }else{
+                            Object.entries(properties).forEach(function(key){
+                                $('.property-list-boxes').append(`
+                                <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                                    <div class="box">   
+                                        <div class="property-img">
+                                            <div class="property-type"><span>For ${key[1].property_sale_or_rent}</span></div>
+                                            <a href="${key[1].property_url}"><img src="${key[1].property_image_url}" alt=""></a>
+                                        </div>
+                                        <div class="property-desc">
+                                            <h3>${key[1].property_price}</h3>
+                                            <a href="${key[1].property_url}"><h4>${key[1].property_title}</h4></a>
+                                            <p>${key[1].property_sub_title}</p>
+                                            <div class="buttons">
+                                                <span><i class="fa-solid fa-table-cells-large"></i>&nbsp; ${key[1].property_area}</span>
+                                                <a href="${key[1].property_url}">
+                                                    <button>View Property</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                                `);
+                            })
+                        }
+                        }
+                    else if(data.error_message){
+                        console.log(data.error_message)
+                        $('#realestateH2').append("Select Filters First")
+                    }
+                },
+                error: function(error) {
+                  console.error(error);
+                }
+              });
+        })
+    })
+    $(()=>{
+        $('#loadMoreProperties').on('click', function(){
+            let lastId = $('#lastPropertyId').attr('data-last-id')
+            let url = $('#lastPropertyId').attr('data-url')
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    lastId: lastId,
+                },
+                success: function(data) {
+                    if(data.properties){
+                        let properties = data.properties
+                        console.log(properties)
+                        $('#lastPropertyId').attr('data-last-id', Object.entries(properties)[0][0])
+                        Object.entries(properties).forEach(function(key){
+                            $('.property-list-boxes').append(`
+                            <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                                <div class="box">   
+                                    <div class="property-img">
+                                        <div class="property-type"><span>For ${key[1].property_sale_or_rent}</span></div>
+                                        <a href="${key[1].property_url}"><img src="${key[1].property_image_url}" alt=""></a>
+                                    </div>
+                                    <div class="property-desc">
+                                        <h3>${key[1].property_price}</h3>
+                                        <a href="${key[1].property_url}"><h4>${key[1].property_title}</h4></a>
+                                        <p>${key[1].property_sub_title}</p>
+                                        <div class="buttons">
+                                            <span><i class="fa-solid fa-table-cells-large"></i>&nbsp; ${key[1].property_area}</span>
+                                            <a href="${key[1].property_url}">
+                                                <button>View Property</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                            `);
+                        })
+                        }
+                    else if(data.error_message){
+                        $('#loadMoreProperties').text('No More Properties')
+                        $('#loadMoreProperties').addClass('no-more-properties')
+                    }
+                },
+                error: function(error) {
+                  console.error(error);
+                }
+              });
+        })
+    })
+</script>
+{% endblock additionaljs %}

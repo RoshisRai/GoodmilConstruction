@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Projects | Goodmil Construction{% endblock title %}
+{% block projectsactive %}active{% endblock projectsactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="Making a Difference, One Project at a Time: Goodmil Construction's Work">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|Projects" />
+<meta name="og:description" content="Making a Difference, One Project at a Time: Goodmil Construction's Work" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|Projects" />
+<meta name="twitter:description" content="Making a Difference, One Project at a Time: Goodmil Construction's Work" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>PROJECTS</h1>
+            <h2>SCROLL DOWN TO VIEW OUR RECENT PROJECTS</h2>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // PROJECTS
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- PROJECT PAGE FIRST SECTION START -->
+    <section class="projects-first">
+        <div class="projects-first-container">
+            <div class="projects-first-header">
+                <h3>Projects</h3>
+                <h4>Find out how we can add value to your Project. &nbsp; <a href="{% url 'contact-us' %}">Get in touch</a></h4>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+                <ul class="filter-menu">
+                        <li data-target="all" class="current">All</li>
+                        <li data-target="architecture">Architecture</li>
+                        <li data-target="construction">Construction</li>
+                        <li data-target="interior">Interior Design</li>
+                </ul>
+            </div>
+            <ul class="projects-first-boxes filter-item">
+                {% for p in projects %}
+                <a href="{% url 'project-page' p.slug %}" class="outer-box" data-item="{% for c in p.category.all %}{{c.name|lower}} {% endfor %}">
+                    <li>
+                        <div class="box">   
+                            <div class="projects-first-img">
+                                <img src="{{p.main_image.url}}" alt="">
+                            </div>
+                            <div class="img-view-icon">
+                                <h3>{{p.title}}</h3>
+                            </div>
+                            <div class="projects-first-desc">
+                                <p>{{p.location}}</p>
+                                <h3>{{p.title}}</h3>
+                            </div>
+                        </div>
+                    </li>
+                </a>
+                {% if forloop.last %}
+                <input type="hidden" id="lastProductId" data-last-id="{{p.id}}" data-url="{% url 'add-to-projects' %}" data-item="hidden">
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="load-more-projects">
+                <div class="button">
+                    <button id='loadMoreProjects'>Load More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PROJECT PAGE FIRST SECTION END -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="{% static 'js/clients.js' %}"></script>
+<script>
+    function runProjectSorting(){
+        let sortBtn = document.querySelector('.filter-menu').children;
+        let sortItem = document.querySelector('.projects-first-boxes').children;
+
+        for(let i = 0; i < sortBtn.length; i++){
+            sortBtn[i].addEventListener('click', function(){
+                for(let j = 0; j< sortBtn.length; j++){
+                    sortBtn[j].classList.remove('current');
+                }
+
+                this.classList.add('current');
+                
+
+                let targetData = this.getAttribute('data-target');
+
+                for(let k = 0; k < sortItem.length; k++){
+                    sortItem[k].classList.remove('active');
+                    sortItem[k].classList.add('delete');
+
+                    if(sortItem[k].getAttribute('data-item').includes(targetData) || targetData == "all"){
+                        sortItem[k].classList.remove('delete');
+                        sortItem[k].classList.add('active');
+                    }
+                }
+            });
+        }
+    }
+    runProjectSorting()
+
+    $(()=>{
+        $('#loadMoreProjects').on('click', function(){
+            let lastId = $('#lastProductId').attr('data-last-id')
+            let url = $('#lastProductId').attr('data-url')
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {
+                    lastId: lastId,
+                },
+                success: function(data) {
+                    if(data.projects){
+                        let projects = data.projects
+                        console.log()
+                        $('#lastProductId').attr('data-last-id', Object.entries(projects)[0][0])
+                        Object.entries(projects).forEach(function(key){
+                            $('.projects-first-boxes').append(`
+                            <a href="${key[1].project_url}" class="outer-box" data-item="${key[1].project_category}">
+                                <li>
+                                    <div class="box">   
+                                        <div class="projects-first-img">
+                                            <img src="${key[1].project_image_url}" alt="">
+                                        </div>
+                                        <div class="img-view-icon">
+                                            <h3>${key[1].project_title}</h3>
+                                        </div>
+                                        <div class="projects-first-desc">
+                                            <p>${key[1].project_location}</p>
+                                            <h3>${key[1].project_title}</h3>
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                            `);
+                        })
+                        runProjectSorting()
+                        }
+                    else if(data.error_message){
+                        $('#loadMoreProjects').text('No More Projects')
+                        $('#loadMoreProjects').addClass('no-more-projects')
+                    }
+                },
+                error: function(error) {
+                  console.error(error);
+                }
+              });
+        })
+    })
+</script>
+{% endblock additionaljs %}

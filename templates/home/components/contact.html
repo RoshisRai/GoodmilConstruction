@@ -1,0 +1,27 @@
+<!-- CONTACT START  -->
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-left">
+            <h2>CONTACT</h2>
+            <h4>Need help? Call us!</h4>
+            <h3>+977 9800000000</h3>
+            <div class="more-info">
+                <p>Chhaya Center</p>
+                <p>Thamel Kathmandu, Nepal</p>
+                <p>goodmil.construction@gmail.com</p>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form action="{% url 'contact-us' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" id="name" placeholder="Your name*" required>
+                <input type="email" name="email" id="email" placeholder="Your email*" required>
+                <input type="text" name="phone" id="phone"  pattern="[0-9]{10}" placeholder="Your phone*" required>
+                <input type="text" name="subject" id="subject" placeholder="Subject*" required>
+                <textarea name="message" id="message" placeholder="Your message*" cols="20" rows="10"></textarea>
+                <button type="submit">SEND <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- CONTACT END  -->

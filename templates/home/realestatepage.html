@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{property.title}} | Goodmil Construction{% endblock title %}
+{% block realestateactive %}active{% endblock realestateactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/realestatepage.css' %}">
+<meta name="keywords" content="houses, apartments, interior">
+<meta name="description" content="{{property.sub_title}}">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="{{property.title}}" />
+<meta name="og:description" content="{{property.sub_title}}" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="{{property.title}}" />
+<meta name="twitter:description" content="{{property.sub_title}}" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>{{property.title}}</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // <a href="{% url 'realestate' %}">REAT ESTATE</a>&nbsp; // {{property.title}}
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- BLOG POST FIRST START  -->
+    <section class="realestate-page-first">
+        <div class="realestate-page-first-container">
+            <div class="realestate-page-first-body">
+                <div class="realestate-main">
+                    <div class="realestate-main-img">
+                        <img src="{{property.main_image.url}}" alt="">
+                    </div>
+                    <div class="realestate-main-desc">
+                        <div class="realestate-main-title">
+                            <h3>{{property.sub_title}}</h3>
+                            <h1>{{property.title}}</h1>
+                        </div>
+                        <div class="realestate-main-body">
+                            <div class="about-property">
+                                <h3>About the property</h3>
+                            </div>
+                            {{property.content}}
+                        </div>
+                    </div>
+                </div>
+                <div class="realestate-sidebar">
+                    <form action="{% url 'realestate-search' %}" class="realestate-search-form">
+                        <label class="fa-solid fa-magnifying-glass" for="property-search"></label>
+                        <input type="text" name="property-search" id="property-search" class="realestate-search" placeholder="Search Other Properties...">
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="realestate-contact" data-aos="fade-up" data-aos-offset="30">
+                        <div class="property-contact-price">
+                            <p>Property for <strong>{{property.sale_or_rent}}</strong></p>
+                            <h2>{{property.price}}</h2>
+                        </div>
+                        <h2>Get in touch to receive more info about the property</h2>
+                        <form action="{% url 'realestate-enquiry' %}" method="POST" class="property-contact-form">
+                            {% csrf_token %}
+                            <input type="text" name="name" id="name" placeholder="Full Name" required>
+                            <input type="email" name="email" id="email" placeholder="Email Address" required>
+                            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" placeholder="Phone" required>
+                            <input type="hidden" name="property" id="property" value="{{property.id}}">
+                            <button type="submit">Request Info</button>
+                        </form>
+                        <div class="property-reach-agent">
+                            <h3>Reach the agent</h3>
+                            {% if property.agent %}
+                            {% for a in property.agent.all %}
+                            <div class="reach-agent-box">
+                                <h4><i class="fa-solid fa-user"></i>&nbsp; {{a.name}}</h4>
+                                <p><i class="fa-solid fa-phone"></i>&nbsp; (+977) {{a.phone}}</p>
+                                <p><i class="fa-solid fa-envelope-open-text"></i>&nbsp; {{a.email}}</p>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BLOG POST FIRST END  -->
+
+    <!-- REALESTATE NAVIGATION START -->
+    <section class="realestate-navigation-section">
+        <div class="realestate-navigation-container">
+            <div class="realestate-main-navigation">
+                <div class="prev-button">
+                    {% if prev_property_slug is not None %}
+                    <a href="{% url 'realestate-page' prev_property_slug %}"><button><i class="fa-solid fa-caret-left"></i> &nbsp;Previous Property</button></a>
+                    {% endif %}
+                </div>
+                <ul class="share-icons">
+                    <span>Share &nbsp;&nbsp; <i class="fa-solid fa-share-nodes"></i></span>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{SITE_URL}}{% url 'realestate-page' property.slug %}"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://pinterest.com/pin/create/button/?url={% url 'realestate-page' property.slug %}"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="https://twitter.com/intent/tweet?text={{property.title}}&url={% url 'realestate-page' property.slug %}"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={% url 'realestate-page' property.slug %}"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.reddit.com/submit?url={% url 'realestate-page' property.slug %}"><i class="fa-brands fa-reddit"></i></a>
+                </ul>
+                <div class="next-button">
+                    {% if next_property_slug is not None %}
+                    <a href="{% url 'realestate-page' next_property_slug %}"><button>Next Property &nbsp;<i class="fa-solid fa-caret-right"></i></button></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- REALESTATE NAVIGATION END -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

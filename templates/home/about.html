@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us | Goodmil Construction{% endblock title %}
+{% block aboutactive %}active{% endblock aboutactive %}
+{% block footeraboutactive %}active{% endblock footeraboutactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="Building a Legacy of Excellence: The Story of Goodmil Construction">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|About Us" />
+<meta name="og:description" content="Building a Legacy of Excellence: The Story of Goodmil Construction" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|About Us" />
+<meta name="twitter:description" content="Building a Legacy of Excellence: The Story of Goodmil Construction" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>ABOUT US</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // ABOUT US
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- ABOUT FIRST START -->
+    <section class="about-first">
+        <div class="about-first-container">
+            <div class="about-first-left" data-aos="fade-left">
+                <div class="about-first-img1">
+                    <img src="{% static 'img/hero1.png' %}" alt="">
+                </div>
+                <div class="about-first-img2">
+                    <div class="img1">
+                        <img src="{% static 'img/hero2.png' %}" alt="">
+                    </div>
+                    <div class="img2">
+                        <img src="{% static 'img/hero3.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="about-first-right" data-aos="fade-right">
+                <div class="about-first-desc">
+                    <h2>We Understand Your Need</h2>
+                <p>At Goodmil Construction, we understand that your project is more than just a structure; it's an investment in your future. That's why we take the time to listen to your needs and work closely with you to create a customized plan that meets your goals, budget, and timeline.<br><br>
+                Our team of experts has years of experience in the construction industry, offering a wide range of services, including architecture, construction, building, and interior design. We pride ourselves on our attention to detail, using only the highest quality materials and the latest technology to bring your vision to life.<br><br>
+                At Goodmil Construction, we believe that every project is unique, and we are committed to providing personalized service to each of our clients. Whether you're looking to build your dream home, renovate an existing property, or design a commercial space, we are here to help. Contact us today to learn more about how we can make your project a success.
+                </p>
+                </div>
+                <div class="buttons">
+                    <a href="{% url 'projects' %}">
+                        <button class="btn">View Projects</button>
+                    </a>
+                    <a href="{% url 'contact-us' %}">
+                        <button class="btn">Contact Us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT FIRST END -->
+
+    <!-- ABOUT STATS START  -->
+    <section class="about-stats">
+        <div class="about-stats-container">
+            <div class="about-stats-boxes">
+                <div class="box">
+                    <h3><span class="count-digit">400</span>+</h3>
+                    <h4>Projects Completed</h4>
+                </div>
+                <div class="box">
+                    <h3><span class="count-digit">100</span>+</h3>
+                    <h4>Honor Clients</h4>
+                </div>
+                <div class="box">
+                    <h3><span class="count-digit">50</span>+</h3>
+                    <h4>Workers Employeed</h4>
+                </div>
+                <div class="box">
+                    <h3><span class="count-digit">1000</span>+</h3>
+                    <h4>Working Hours</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT STATS END  -->
+
+    <!-- ABOUT SECOND START  -->
+    <section class="about-second">
+        <div class="about-second-container">
+            <div class="about-second-left">
+                <h3><div data-aos="fade-right">Goodmil Construction's Story</div></h3>
+                <p>Goodmil Construction has been a well-established name in the construction industry since its inception in 2013 by Amrit Tamang, who possesses more than 25 years of experience in the relevant field. Tamang continues to head the company and has played a significant role in establishing it as a leading performer, known for delivering excellent work and exceptional customer service.<br><br>
+                The company's success is a result of its commitment to excellence in every aspect of its work. From the initial design phase to the final touches on a project, Goodmil Construction's team of experts is dedicated to providing the best possible service to its clients. With a focus on innovation and the latest technologies, the company is always on the cutting edge of the industry, ensuring that its projects are not only of the highest quality, but also efficient and sustainable.<br><br>
+                Over the years, Goodmil Construction has worked on a wide range of projects, from small residential renovations to large commercial developments. Despite its success, the company remains committed to its core values of honesty, integrity, and hard work. These values have helped to build a loyal customer base and a team of dedicated employees who are passionate about what they do. With a commitment to excellence and a focus on innovation, Goodmil Construction is poised for continued success in the years to come.The company demonstrated its dedication to aiding the community in times of crisis by significantly contributing to the restoration and improvement of various vital structures, such as schools, hospitals, and other buildings that were devastated by the 2015 earthquake in Nepal.
+            </p>
+            </div>
+            <div class="about-second-right">
+                <div class="about-second-img">
+                    <!-- <img src="./img/hero5.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT SECOND END  -->
+
+    <!-- ABOUT BRANCHES START  -->
+    <section class="about-branch">
+        <div class="about-branch-container">
+            <div class="about-branch-header">
+                <h3>Our Offices</h3>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+                <p>Our branches are the foundation of our success at Goodmil Construction. With a strong presence in multiple locations, we are able to provide our exceptional construction services to clients across the region. Contact us to find out how we can help you build your dream project.</p>
+            </div>
+            <div class="about-branch-boxes" data-aos="fade-up" data-aos-offset="20">
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero1.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Thamel, Kathmandu</h3>
+                        <p>
+                            The Chhaya Center branch of our construction company has been operational since 2013 A.D. and is conveniently located in the bustling area of Thamel. Our team is available to assist you during our opening hours of 10 am to 6 pm. Contact us for all your construction needs in the region.
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero2.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Pokhara, Nepal</h3>
+                        <p>
+                            Since 2016 A.D., our construction company has been operating a branch in the picturesque city of Pokhara, Nepal. Our team is at your service from 10 am to 6 pm and is eager to cater to all your construction requirements in the area. Do not hesitate to get in touch with us.
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero4.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Chitwan, Nepal</h3>
+                        <p>
+                            Our construction company established a branch in the beautiful region of Chitwan, Nepal since 2018 A.D. We are available to serve you during our opening hours of 10 am to 6 pm. Get in touch with us for any of your construction needs in the area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT BRANCHES END  -->
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        function visible(partial) {
+        var $t = partial,
+            $w = jQuery(window),
+            viewTop = $w.scrollTop(),
+            viewBottom = viewTop + $w.height(),
+            _top = $t.offset().top,
+            _bottom = _top + $t.height(),
+            compareTop = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+
+        return ((compareBottom <= viewBottom) && (compareTop >= viewTop) && $t.is(':visible'));
+
+    }
+    $(window).scroll(function(){
+
+        if(visible($('.count-digit')))
+          {
+              if($('.count-digit').hasClass('counter-loaded')) return;
+              $('.count-digit').addClass('counter-loaded');
+            
+              $('.count-digit').each(function () {
+              var $this = $(this);
+              jQuery({ Counter: 0 }).animate({ Counter: $this.text() }, {
+                  duration: 2000,
+                  easing: 'swing',
+                  step: function () {
+                  $this.text(Math.ceil(this.Counter));
+                  }
+              });
+              });
+          }
+      })
+    })
+</script>
+{% endblock additionaljs %}

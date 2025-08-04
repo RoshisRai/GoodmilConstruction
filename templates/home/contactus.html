@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us | Goodmil Construction{% endblock title %}
+{% block contactactive %}active{% endblock contactactive %}
+{% block footercontactactive %}active{% endblock footercontactactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/contactus.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="Building a Stronger Future Together: Contact Goodmil Construction">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|Contact Us" />
+<meta name="og:description" content="Building a Stronger Future Together: Contact Goodmil Construction" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|Contact Us" />
+<meta name="twitter:description" content="Building a Stronger Future Together: Contact Goodmil Construction" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>CONTACT US</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // CONTACT US
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- CONTACT PAGE FIRST SECTION START -->
+    <section class="contactcontainer">
+        <div class="contact-page-header">
+            <h3>Contact Us</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+        </div>
+        <div class="content">
+            <div class="left-side" data-aos="fade-right">
+                <div class="contactimage">
+                    <img src="{% static 'img/hero3.png' %}" alt="">
+                </div>
+                <div class="contactinfo">
+                <h2>Contact Information</h2>
+                <p>Fill up the form for any queries or for the support you need from our team.</p>
+                <p style="line-height: 2;font-size: 18px;"><i class="fas fa-phone-alt"></i></i> &nbsp; +977 9800000000</p>
+                <p style="font-size: 18px;"><i class="far fa-envelope-open"></i> &nbsp; goodmil.construction@gmail.com</p>
+                <p style="font-size: 20px;">
+                    <a rel="nofollow" href="https://www.facebook.com/sarashopping.np/" target="_blank"><i class="fab fa-facebook"></i></a> &nbsp;
+                    <a rel="nofollow" href="https://www.instagram.com/saraglobal.np?utm_medium=copy_link" target="_blank"><i class="fab fa-instagram"></i></a> &nbsp;
+                    <a rel="nofollow" href="https://www.twitter.com/saraglobalstore/" target="_blank"><i class="fab fa-twitter"></i></a> &nbsp;
+                    <a rel="nofollow" href="https://youtube.com/saraglobalstore/" target="_blank"><i class="fab fa-youtube"></i></a> &nbsp;
+                    <a rel="nofollow" href="https://www.tiktok.com/ZSeC61JvG/" target="_blank"><i class="fab fa-tiktok"></i></a> &nbsp;
+                    <a href="https://www.saraglobalstore.com" target="_blank"><i class="fas fa-paperclip"></i></a> &nbsp;
+                </p>
+                </div>
+            </div>
+            <div class="right-side" data-aos="fade-left">
+                <div class="right-side-container">
+                    <div class="topic-text" style="font-size: 28px;">Contact Us</div>
+                    <p style="font-size: 18px;">If you have any queries and suggestions, you can send me message from here.</p>
+                    <form action="{% url 'contact-us' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Your name" name='name' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="email" placeholder="Your email" name='email' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Your phone" pattern="[0-9]{10}" name='phone' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Your Subject" name='subject' required>
+                        </div>
+                        <div class="input-box">
+                            <p style="font-size: 17px;">Preffered method of communication</p>
+                            <span style="padding-left: 20px;">Phone: </span><input type="radio" name="preference" id="phone" value="Phone" checked>
+                            <span>Email: </span><input type="radio" name="preference" value="Email" id="email">
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="message" id="message" placeholder="Your message..."></textarea>
+                            <!-- <input type="text" placeholder="Enter your message" name="message" required> -->
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="Send Now" >
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT PAGE FIRST SECTION END -->
+
+   <!-- MAP SECTION START  -->
+   <section class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.05772984701!2d85.31059901498801!3d27.715503782788502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19defd09fed5%3A0x1e3de7b6c6adf631!2sGoodmil%20Amrit%20Nirman%20Sewa!5e0!3m2!1sen!2snp!4v1675408090740!5m2!1sen!2snp"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+    </section>
+   <!-- MAP SECTION END  -->
+
+    <!-- CONTACT BRANCHES START  -->
+    <section class="about-branch">
+        <div class="about-branch-container">
+            <div class="about-branch-header">
+                <h3>Our Offices</h3>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+                <p>Our branches are the foundation of our success at Goodmil Construction. With a strong presence in multiple locations, we are able to provide our exceptional construction services to clients across the region. Contact us to find out how we can help you build your dream project.</p>
+            </div>
+            <div class="about-branch-boxes" data-aos="fade-up">
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero1.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Thamel, Kathmandu</h3>
+                        <p>
+                            The Chhaya Center branch of our construction company has been operational since 2013 A.D. and is conveniently located in the bustling area of Thamel. Our team is available to assist you during our opening hours of 10 am to 6 pm. Contact us for all your construction needs in the region.
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero2.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Pokhara, Nepal</h3>
+                        <p>
+                            Since 2016 A.D., our construction company has been operating a branch in the picturesque city of Pokhara, Nepal. Our team is at your service from 10 am to 6 pm and is eager to cater to all your construction requirements in the area. Do not hesitate to get in touch with us.
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="about-branch-img">
+                        <img src="{% static 'img/hero3.png' %}" alt="">
+                    </div>
+                    <div class="about-branch-desc">
+                        <h3>Chitwan, Nepal</h3>
+                        <p>
+                            Our construction company established a branch in the beautiful region of Chitwan, Nepal since 2018 A.D. We are available to serve you during our opening hours of 10 am to 6 pm. Get in touch with us for any of your construction needs in the area.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT BRANCHES END  -->
+
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

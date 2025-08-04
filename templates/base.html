@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="shortcut icon" href="{% static 'img/goodmil-logo.jpg' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://kit.fontawesome.com/73c17b3c10.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    {% block additionalheader %}
+    {% endblock additionalheader %}
+</head>
+<body>
+
+    <!-- MESSAGE ALERT START -->
+    {%if messages %}
+    {% for message in messages %}
+    <div class="alert" style="display: none;">
+      <span></span>
+      <span>{{message}}</span>
+      <span>&#10006;</span>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- MESSAGE ALERT END -->
+
+    <!-- PRELOADER START -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- PRELOADER END -->
+
+    <!-- HEADER START -->
+    <div class="topbar">
+        <div class="topbar-container">
+            <div class="topbar-left">
+                <ul>
+                    <li><i class="fa-solid fa-phone"></i> +977 9800000000</li>
+                    <li><i class="fa-solid fa-clock"></i> Sun-Fri 10:00 - 6:00</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Chhaya Center, Thamel, Kathmandu</li>
+                </ul>
+            </div>
+            <div class="topbar-right">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navlogo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/goodmil-logo-full.jpg' %}" alt="Goodmil logo">
+                </a>
+            </div>
+            <div class="navlinks">
+                <div class="drop-navlinks-title">
+                    <h4>Goodmil Constuction</h4>
+                    <div class="cross-icon">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="{% block homeactive %}{% endblock homeactive %}">HOME</a></li>
+                    <li><a href="{% url 'about' %}" class="{% block aboutactive %}{% endblock aboutactive %}">ABOUT US</a></li>
+                    <li><a href="{% url 'services' %}" class="{% block servicesactive %}{% endblock servicesactive %}">SERVICES</a></li>
+                    <li><a href="{% url 'projects' %}" class="{% block projectsactive %}{% endblock projectsactive %}">PROJECTS</a></li>
+                    <li><a href="{% url 'realestate' %}" class="{% block realestateactive %}{% endblock realestateactive %}">REAL ESTATE</a></li>
+                    <li><a href="{% url 'blog' %}" class="{% block blogactive %}{% endblock blogactive %}">BLOG</a></li>
+                    <li><a href="{% url 'gallery' %}" class="{% block galleryactive %}{% endblock galleryactive %}">GALLERY</a></li>
+                    <li><a href="{% url 'apply' %}" class="{% block applyactive %}{% endblock applyactive %}">APPLY NOW</a></li>
+                    <li><a href="{% url 'contact-us' %}" class="contact-link {% block contactactive %}{% endblock contactactive %}">CONTACT</a></li>
+                </ul>
+                <div class="search {% block searchactive%}{% endblock searchactive%}">
+                    <i class="fa-solid fa-magnifying-glass nav-search-toggle"></i>
+                    <div class="search-responsive">
+                        <form action="{% url 'realestate-search' %}" method="get"  class="nav-property-search-responsive-form">
+                            <label class="fa-solid fa-magnifying-glass" for="property-search"></label>
+                            <input type="text" name="property-search" id="property-search" class="property-search" placeholder="Search Property...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-shadow" id="nav-shadow"></div>
+            <div class="nav-dropdown">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="search-body">
+                <form action="{% url 'realestate-search' %}" method="get" class="nav-property-search-form">
+                    <label class="fa-solid fa-magnifying-glass" for="property-search"></label>
+                    <input type="text" name="property-search" id="property-search" class="property-search" placeholder="Search Property...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>        
+    </nav>
+    <!-- HEADER END -->
+
+    {% block maincontent %}
+    {% endblock maincontent %}
+
+    <!-- FOOTER START  -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-header">
+                <div class="footer-img">
+                    <img src="{% static 'img/goodmil-logo.jpg' %}" alt="">
+                    <span>Goodmil Construction</span>
+                </div>
+                <div class="footer-desc">
+                    <p>Goodmil Construction, a leader in the construction industry with a rich history dating back to 2013 established by the founder Amrit Tamang, provides top-quality architecture, construction, building, interior design, and more. Trust us to bring your vision to life with exceptional customer service and attention to detail.</p>
+                    <div class="foot-social-links">
+                        <ul>
+                            <a href="#"><li><i class="fa-brands fa-facebook-f"></i></li></a>
+                            <a href="#"><li><i class="fa-brands fa-whatsapp"></i></li></a>
+                            <a href="#"><li><i class="fa-brands fa-instagram"></i></li></a>
+                            <a href="#"><li><i class="fa-brands fa-youtube"></i></li></a>
+                            <a href="#"><li><i class="fa-brands fa-tiktok"></i></li></a>
+                            <a href="#"><li><i class="fa-brands fa-twitter"></i></li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-body">
+                <div class="footer-item">
+                    <h4>Get in touch</h4>
+                    <ul>
+                        <li><i class="fa-sharp fa-solid fa-location-dot"></i> Chhaya Center, Thamel, Kathmandu</li>
+                        <li><i class="fa-solid fa-envelope"></i> goodmil.construction@gmail.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +977 9800000000</li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h4>Business hours</h4>
+                    <ul>
+                        <li>Sunday to Friday: 10am to 6pm</li>
+                        <li>Saturday: Closed</li>
+                        <li>Support Hours: 365 days (24/7)</li>
+                    </ul>
+                </div>
+                <div class="footer-item">
+                    <h4>Latest Post</h4>
+                    <div class="footer-blogs">
+                        {% for b in footer_blogs %}
+                        <a href="{% url 'blog-post' b.slug %}">
+                            <div class="footer-blog">
+                                <div class="blog-img">
+                                    <img src="{{b.main_image.url}}" alt="">
+                                </div>
+                                <div class="blog-desc">
+                                    <p>{{b.updated_at}}</p>
+                                    <p>{{ b.title|truncatechars:55 }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h4>Mailing list</h4>
+                    <p>Enter your email address for our mailing list to keep your self our lastest updated.</p>
+                    <form action="{% url 'newsletter-subscriber' %}" method="post" class="footer-form">
+                        {% csrf_token %}
+                        <input type="text" name="subscribe-email" id="subscribe-email" placeholder="Email Address">
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-nav">
+                    <ul>
+                        <a href="{% url 'home' %}" class="{% block footerhomeactive %}{% endblock footerhomeactive %}">
+                            <li>Home</li>
+                        </a>
+                        <a href="{% url 'services' %}" class="{% block footerservicesactive %}{% endblock footerservicesactive %}">
+                            <li>Services</li>
+                        </a>
+                        <a href="{% url 'about' %}" class="{% block footeraboutactive %}{% endblock footeraboutactive %}">
+                            <li>About Us</li>
+                        </a>
+                        <a href="{% url 'contact-us' %}" class="{% block footercontactactive %}{% endblock footercontactactive %}">
+                            <li>Contact Us</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="footer-copy">
+                    <p><b style="font-size: 1.1rem">&copy; <strong id="date"></strong></b> Goodmil Amrit Nirman Sewa Pvt. Ltd. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END  -->
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'js/simpleparallax.js' %}"></script>
+    <script>
+        let getDate = new Date()
+        let dateSpan = document.getElementById('date')
+        dateSpan.innerHTML = getDate.getFullYear()
+    </script>
+    <script>
+        $(()=>{
+            setTimeout(function(){
+                $('.alert').fadeIn();
+                setTimeout(function(){
+                    $('.alert').fadeOut();
+                }, 2200);
+            }, 1500);
+            $('.alert span:last-child').on('click',function(){
+                $(this).parent().fadeOut();
+            })
+        })
+    </script>
+    {% block additionaljs %}
+    {% endblock additionaljs %}
+</body>
+</html>

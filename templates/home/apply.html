@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Apply Now | Goodmil Construction{% endblock title %}
+{% block applyactive %}active{% endblock applyactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/apply.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="Land your dream job with Goodmil Construction">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|Apply Now" />
+<meta name="og:description" content="Land your dream job with Goodmil Construction" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|Apply Now" />
+<meta name="twitter:description" content="Land your dream job with Goodmil Construction" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>APPLY NOW</h1>
+            <h2>LAND A JOB WITH GOODMIL CONSTRUCTION</h2>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // APPLY NOW
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- APPLY NOW FIRST SECTION START -->
+    <section class="apply-first-section">
+        <div class="apply-first-container">
+            <h1 class="apply-first-title" data-aos="fade-up">APPLY TODAY </h1>
+            <p data-aos="zoom-out">Are you ready to take your career to the next level? Look no further! Our company is seeking driven and ambitious individuals to join our team.</p>
+            <div class="" data-aos="fade-right" data-aos-offset="50">
+                <h2 class="apply-first-sub-title">Why Join Us?</h2>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; Exciting career opportunities in a fast-paced and dynamic environment</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; Competitive salary packages and benefits</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; A supportive and collaborative workplace culture</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; Opportunities for growth and development within the company</li>
+                </ul>
+            </div>
+            <div class="" data-aos="fade-right" data-aos-offset="50">
+                <h2 class="apply-first-sub-title">What We Offer</h2>
+                <ul>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; Challenging and meaningful work</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; A supportive team of experts in their field</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; Access to cutting-edge technology and resources</li>
+                    <li><i class="fa-solid fa-circle-check"></i>&nbsp; A culture of continuous learning and growth</li>
+                </ul>
+            </div>
+            <div class="" data-aos="fade-right" data-aos-offset="50">
+                <h2 class="apply-first-sub-title">How to Apply</h2>
+                <p>Ready to apply? Fill out the form below with your resume and a cover letter. Our team will review your application and get back to you soon.</p>
+                <p>Don't miss this opportunity to take your career to the next level. Apply now!</p>
+            </div>
+        </div>
+    </section>
+    <!-- APPLY NOW FIRST SECTION END -->
+
+    <!-- CONTACT PAGE FIRST SECTION START -->
+    <section class="contactcontainer">
+        <div class="content">
+            <div class="right-side">
+                <div class="right-side-container">
+                    <div class="topic-text" style="font-size: 28px;">JOIN OUR TEAM</div>
+                    <p style="font-size: 18px;">Become a Part of Our Growing Construction Family Today</p>
+                    <form action="{% url 'apply' %}" method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        <div class="input-box-title">
+                            <p>Name:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="First name" name='first-name' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Last name" name='last-name' required>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Contact Information:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="email" placeholder="Email address" name='email' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Phone number" pattern="[0-9]{10}" name='phone' required>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Current Address:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Street Address" name='street-address' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="City/Town" name='city-town' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="District" name='district' required>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Postal/ZIP Code (Optional)" pattern="[0-9]{5}" name='zip-code'>
+                        </div>
+                        <div class="input-box not-box-shadow">
+                            <p style="font-size: 17px;margin-top: .5rem;">Preffered method of communication</p>
+                            <span style="padding-left: 20px;">Phone: </span><input type="radio" name="preference" id="phone" value="Phone" checked>
+                            <span>Email: </span><input type="radio" name="preference" value="Email" id="email">
+                        </div>
+                        <div class="input-box-title">
+                            <p>Position Applied For:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box">
+                            <input type="text" placeholder="Specify the position you are interested in" name='position' required>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Upload Resume Here:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box not-box-shadow">
+                            <input type="file" name="resume" id="resume">
+                        </div>
+                        <div class="input-box-title">
+                            <p>Upload Cover Letter Here:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box sinput-box not-box-shadow">
+                            <input type="file" name="cover-letter" id="cover-letter">
+                        </div>
+                        <div class="input-box-title">
+                            <p>Education/Qualification:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="education" id="education" placeholder="Enter your education background, including the name of the institution, degree, and field of study."></textarea>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Work Experience:<span style="color: red;font-size: 2rem;">*</span></p>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="work-experience" id="work-experience" placeholder="Enter your work experience, including the name of the company, job title, and dates of employment."></textarea>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Skills: (optional)</p>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="skills" id="skills" placeholder="Enter your skills and relevant experience."></textarea>
+                        </div>
+                        <div class="input-box-title">
+                            <p>References: (optional)</p>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="references" id="references" placeholder="Enter your skills and relevant experience."></textarea>
+                        </div>
+                        <div class="input-box-title">
+                            <p>Additional Information: (optional)</p>
+                        </div>
+                        <div class="input-box message-box">
+                            <textarea name="additional-info" id="additional-info" placeholder="Enter any additional information or comments that you want to include."></textarea>
+                        </div>
+                        <div class="button">
+                            <input type="submit" value="APPLY NOW &nbsp;&#128640;" >
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT PAGE FIRST SECTION END -->
+
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

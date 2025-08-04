@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Gallery | Goodmil Construction{% endblock title %}
+{% block galleryactive %}active{% endblock galleryactive %}
+{% block footeraboutactive %}active{% endblock footeraboutactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-grid.min.css" integrity="sha512-JQksK36WdRekVrvdxNyV3B0Q1huqbTkIQNbz1dlcFVgNynEMRl0F8OSqOGdVppLUDIvsOejhr/W5L3G/b3J+8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+<meta name="keywords" content="Goodmil Construction, best construction company">
+<meta name="description" content="A Picture is Worth a Thousand Words: The Gallery of Goodmil Construction">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="Goodmil Construction|Gallery" />
+<meta name="og:description" content="A Picture is Worth a Thousand Words: The Gallery of Goodmil Construction" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction|Gallery" />
+<meta name="twitter:description" content="A Picture is Worth a Thousand Words: The Gallery of Goodmil Construction" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+
+{% block maincontent %}
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>GALLERY</h1>
+            <h2>EXPLORE OUR PORTFOLIO SHOWCASE</h2>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // GALLERY
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- ABOUT PAGE FIRST SECTION START -->
+    <section class="gallery-page-first">
+        <div class="gallery-page-first-container">
+            <div class="gallery-page-first-header">
+                <h3>Gallery</h3>
+                <h4>Checkout photos from Goodmil Construction</h4>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+                <ul class="filter-menu">
+                        <li data-filter="*" class="current">All</li>
+                        <li data-filter=".architecture">Architecture</li>
+                        <li data-filter=".construction">Construction</li>
+                        <li data-filter=".interior">Interior Design</li>
+                        <li data-filter=".events">Events</li>
+                        <li data-filter=".other">Other</li>
+                </ul>
+            </div>
+            <div class="filter-container gallery-boxes row" data-aos="zoom-in">
+                {% for g in gallery %}
+                <div class="outer-box {% for c in g.category.all %}{{c.name|lower}} {% endfor %} col-sm-6 col-md-4">
+                    <div class="box">   
+                        <div class="gallery-img image">
+                            <img src="{{g.main_image.url}}" alt="">
+                        </div>
+                        <div class="img-view-icon">
+                            <h3>{{g.title}}</h3>
+                        </div>
+                        <div class="gallery-desc">
+                            <p>{{g.location}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="preview-box">
+                <div class="details">
+                    <span class="title">Image <p class="current-img"></p> of <p class="total-img"></p></span>
+                    <span class="icon fa-regular fa-circle-xmark"></span>
+                </div>
+                <div class="image-box">
+                    <div class="sli pre"><i class="fa-solid fa-angle-left"></i></div>
+                    <div class="sli nex"><i class="fa-solid fa-angle-right"></i></div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </section>
+    <!-- ABOUT PAGE FIRST SECTION END -->
+
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="{% static 'js/clients.js' %}"></script>
+<script src="{% static 'js/isotopes.js' %}"></script>
+<script src="{% static 'js/gallery.js' %}"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+{% endblock additionaljs %}

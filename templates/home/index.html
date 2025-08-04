@@ -1,0 +1,415 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}GoodMil Amrit Nirman Sewa Pvt. Ltd (GoodMil Construction){% endblock title %}
+{% block homeactive %}active{% endblock homeactive %}
+{% block footerhomeactive %}active{% endblock footerhomeactive %}
+{% block additionalheader %}
+<meta name="keywords" content="Goodmil Construction, best construction company, nepal construction company, building, construction, renovation">
+<meta name="description" content="Goodmil Construction is a company that specializes in providing innovative construction services to its clients. With a passion for excellence and a commitment to customer satisfaction, Goodmil Construction is dedicated to turning dreams into reality. Whether you are looking to build a new home, remodel an existing property, or undertake a commercial construction project, Goodmil Construction has the skills, experience, and expertise to bring your vision to life. The company's team of experts will work closely with you to understand your unique needs and desires, and will use the latest technologies and techniques to bring your construction project to life. With a focus on quality, efficiency, and affordability, Goodmil Construction is the choice for those who want to build with confidence. So if you're looking for a construction partner that will help you turn your dreams into reality, look no further than Goodmil Construction.">
+<meta name="robots" content="index, follow" />
+<link rel="cannonical" href="https://site.com/">
+<meta name="og:title" content="SaraGlobalStore" />
+<meta name="og:description" content="Goodmil Construction is a company that specializes in providing innovative construction services to its clients. With a passion for excellence and a commitment to customer satisfaction, Goodmil Construction is dedicated to turning dreams into reality." />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="Goodmil Construction" />
+<meta name="twitter:description" content="Goodmil Construction is a company that specializes in providing innovative construction services to its clients. With a passion for excellence and a commitment to customer satisfaction, Goodmil Construction is dedicated to turning dreams into reality." />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+<!-- HERO START -->
+<section class="banner-section" id="add-margin">
+    <div class="slider">
+        <div class="myslide fade">
+            <div class="txt texts">
+                <h3 class="sth3">YOU CAN TRUST</h3>
+                <h2 class="sth2">WE BUILD <span>YOUR DREAMS</span></h2>
+                <p class="stp">We are property development experts delevring quality places to live and Work.</p>
+                <div class="stbtns buttons">
+                    <a href="{% url 'contact-us' %}"><button>CONTACT US &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                    <a href="{% url 'about' %}"><button>ABOUT US &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                </div>
+            </div>
+            <img src="{% static 'img/hero3.png' %}" style="width: 100%;">
+        </div>
+        
+        <div class="myslide fade">
+            <div class="txt texts">
+                <h3 class="sth3">CONNECT WITH OUR SERVICES</h3>
+                <h2 class="sth2"><span>YOUR DREAM</span> PARTNER</h2>
+                <p class="stp">We turn your vision into reality by providing comprehensive architecture and construction services.</p>
+                <div class="stbtns buttons">
+                    <a href="{% url 'about' %}"><button>ABOUT US &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                    <a href="{% url 'projects' %}"><button>VIEW PROJECTS &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                </div>
+            </div>
+            <img src="{% static 'img/hero2.png' %}" style="width: 100%;">
+        </div>
+        
+        <div class="myslide fade">
+            <div class="txt texts">
+                <h3 class="sth3">PROFESSIONAL CONSTRUCTION COMPANY</h3>
+                <h2 class="sth2"><span>HIGH QUALITY</span> MATERIALS</h2>
+                <p class="stp">Our team of designers and architects knows that good design isn't just about looks.</p>
+                <div class="stbtns buttons">
+                    <a href="{% url 'projects' %}"><button>VIEW PROJECTS &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                    <a href="{% url 'services' %}"><button>OUR SERVICES &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                </div>
+            </div>
+            <img src="{% static 'img/hero1.png' %}" style="width: 100%;">
+        </div>
+        
+        <div class="myslide fade">
+            <div class="txt texts">
+                <h3 class="sth3">ARCHITECHTURE AND DESIGN</h3>
+                <h2 class="sth2">YOU CAN <span>COUNT ON</span></h2>
+                <p class="stp">Our architects are experts at balancing aesthetics, functionality, and your unique vision.</p>
+                <div class="stbtns buttons">
+                    <a href="{% url 'services' %}"><button>OUR SERVICES &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                    <a href="{% url 'gallery' %}"><button>GALLERY &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                </div>
+            </div>
+            <img src="{% static 'img/hero4.png' %}" style="width: 100%;">
+        </div>
+        
+        <div class="myslide fade">
+            <div class="txt texts">
+                <h3 class="sth3">BUILDING WITH INTEGRITY & VISION</h3>
+                <h2 class="sth2"><span>DELIVERING</span> WITH <span>EXCELLENCE</span></h2>
+                <p class="stp">Interior design is more than just decor - it's about creating a space that enhances your life.</p>
+                <div class="stbtns buttons">
+                    <a href="{% url 'gallery' %}"><button>GALLERY &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                    <a href="{% url 'contact-us' %}"><button>CONTACT US &nbsp;&nbsp;<i class="fa-sharp fa-solid fa-circle-arrow-right"></i></button></a>
+                </div>
+            </div>
+            <img src="{% static 'img/hero5.png' %}" style="width: 100%;">
+        </div>
+        
+        <!-- onclick js -->
+        <a class="slide-prev" onclick="plusSlides(-1)"><i class="fa-solid fa-circle-chevron-left"></i></a>
+        <a class="slide-next" onclick="plusSlides(1)"><i class="fa-solid fa-circle-chevron-right"></i></a>
+        
+        <div class="dotsbox" style="text-align:center">
+            <span class="fa-solid fa-circle-dot dot" aria-hidden="true" onclick="currentSlide(1)"></span>
+            <span class="fa-solid fa-circle-dot dot" aria-hidden="true" onclick="currentSlide(2)"></span>
+            <span class="fa-solid fa-circle-dot dot" aria-hidden="true" onclick="currentSlide(3)"></span>
+            <span class="fa-solid fa-circle-dot dot" aria-hidden="true" onclick="currentSlide(4)"></span>
+            <span class="fa-solid fa-circle-dot dot" aria-hidden="true" onclick="currentSlide(5)"></span>
+            <!-- <span class="dot" onclick="currentSlide(1)"></span> -->
+            <!-- <span class="dot" onclick="currentSlide(2)"></span> -->
+            <!-- <span class="dot" onclick="currentSlide(3)"></span> -->
+            <!-- <span class="dot" onclick="currentSlide(4)"></span> -->
+            <!-- <span class="dot" onclick="currentSlide(5)"></span> -->
+        </div>
+        <!-- /onclick js -->
+    </div>
+</section>b
+<!-- HERO END -->
+
+<!-- HIGHLIGHTED SERVICES START -->
+<section class="highlighted-services">
+    <div class="highlighted-container">
+        <div class="box">
+            <div data-aos="fade-up" data-aos-offset="10">
+                <h3>RENOVATING BUILDINGS</h3>
+                <p>Transform your living or working space with our expert renovation services. From concept to completion, we provide creative solutions that breathe new life into buildings.</p>
+            </div>
+        </div>
+        <div class="box">
+            <div data-aos="fade-up" data-aos-offset="70">
+                <h3>DESIGN AND BUILDING</h3>
+                <p>We provide end-to-end design and building solutions that bring your vision to life. From planning to construction, our experts handle it all.</p>
+            </div>
+        </div>
+        <div class="box">
+            <div data-aos="fade-up" data-aos-offset="130">
+                <h3>PAINTING AND ROOFING</h3>
+                <p>We offer expert painting and roofing services to enhance your property. Whether you need minor repairs or a full renovation, we deliver long-lasting solutions that are of the highest quality.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- HIGHLIGHTED SERVICES END -->
+
+<!-- ABOUT START  -->
+<section class="about">
+    <div class="about-container">
+        <div class="about-left"><h3><div data-aos="fade-right">Goodmil Construction's Story</div></h3></div>
+        <div class="about-right">
+            <div class="about-img">
+                <img src="{% static 'img/about1.png' %}" alt="">
+            </div>
+            <div class="about-desc">
+                <div data-aos="fade-left">
+                <p>Goodmil Amrit Nirman Sewa (Goodmil Construction) has a long-standing presence in the construction industry, tracing back to its establishment in 2013 by Amrit Tamang, who has over 25 years of experience in the field. Tamang is still in charge of the company and has led it to rise to prominence as a top performer, renowned for its high-quality output and outstanding customer service.<br><br>
+                The company's success is a result of its commitment to excellence in every aspect of its work. From the initial design phase to the final touches on a project, Goodmil Construction's team of experts is dedicated to providing the best possible service to its clients. The company also played a huge role in repairing and renovating the buildings destroyed by the earthquake that hit Nepal in 2015, including schools, hospitals, and other important structures, demonstrating its commitment to contributing to the community in times of need.</p>
+                <a href="{% url 'about' %}"><button>Read more</button></a>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ABOUT END  -->
+
+<!-- SERVICES START  -->
+<section class="services">
+    <div class="services-container">
+        <div class="service-header">
+            <h3>Our Services</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+            <p>At Goodmil Construction, we take pride in offering a wide range of services that cater to all aspects of the construction industry. From initial architectural design and planning to the final construction and finishing touches, we work with our clients to ensure that their vision becomes a reality.</p>
+        </div>
+        <div class="service-boxes">
+            <div class="box" data-aos="fade-up">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/3ddesigning.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Architech Plan & 3D Designs</h3>
+                    <p>Our architectural plans and 3D designs are carefully crafted by our team of experts to help our clients visualize their construction projects in detail. We take pride in creating designs that are both functional and visually appealing, ensuring that our clients are satisfied with the end result.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-offset="200">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/civilworks.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Civil Works</h3>
+                    <p>At Goodmil Construction, we provide a wide range of civil works services to meet the needs of our clients. Our experienced team is equipped to handle everything from roadworks to drainage systems, ensuring that your construction project is completed on time and within budget.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/renovation.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Repair & Renovation</h3>
+                    <p>At Goodmil Construction, we provide top-quality repair and renovation services for both residential and commercial properties. Our skilled team is equipped to handle all aspects of the repair and renovation process, from initial assessment to final completion.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-offset="200">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/realestate.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Realestate & Housing Services</h3>
+                    <p>Goodmil Construction provides top-notch real estate and housing services, specializing in the construction of high-quality homes and commercial properties. Our team works with clients to develop and implement customized plans that meet their unique needs and specifications.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/interiordesign.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Interior Design & Decoration</h3>
+                    <p>Goodmil Construction offers Interior Design and Decoration services to enhance the aesthetic appeal of your property. Our team of experts creates unique and customized designs that reflect your personality and preferences, delivering an exceptional end result.</p>
+                </div>
+            </div>
+            <div class="box" data-aos="fade-up" data-aos-offset="200">
+                <div class="service-img">
+                    <div class="img">
+                        <img src="{% static 'img/painting.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="service-desc">
+                    <h3>Painting & Roofing</h3>
+                    <p>Goodmil Construction provides professional painting and roofing services for both residential and commercial properties. Our skilled workers use only high-quality materials to ensure that your property looks its best and is protected from the elements for years to come.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SERVICES END  -->
+
+<!-- PROJECTS START  -->
+<section class="projects">
+    <div class="projects-container">
+        <div class="project-header">
+            <h3>Featured Goodwil's Work</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+            <p>At our construction company, we take pride in showcasing our featured projects. From large commercial builds to bespoke residential designs, we have a range of exceptional work to highlight. Our featured projects exemplify our commitment to quality workmanship and innovative designs.</p>
+        </div>
+        <div class="project-boxes">
+            <div class="swiper mySwiper container">
+                <div class="swiper-wrapper content">
+                    {% for p in projects %}
+                    <div class="swiper-slide card">
+                        <div class="card-content">
+                            <div class="card-image">
+                                <img src="{{p.main_image.url}}" alt="">
+                            </div>
+                            <div class="card-icons"></div>
+                            <div class="card-desc">
+                                <h3>{{p.title}}</h3>
+                                <p><span>{{p.location}}</span></p>
+                                <div class="button">
+                                    <a href="{% url 'project-page' p.slug %}">
+                                        <button>VIEW PROJECT</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+<!-- PROJECTS END  -->
+
+<!-- PROPERTIES START  -->
+<section class="properties">
+    <div class="properties-container">
+        <div class="property-header">
+            <h3>Featured Properties</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+            <p>"Featured Properties" is a dedicated section of our construction company website that showcases the range of real estate properties we have available for rent or sale. From apartments to houses, we provide a wide selection of properties to suit various needs and preferences.</p>
+        </div>
+        <div class="property-boxes">
+            {% for p in properties %}
+            <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                <div class="box">   
+                    <div class="property-img">
+                        <div class="property-type"><span>For {{p.sale_or_rent}}</span></div>
+                        <a href="{% url 'realestate-page' p.slug %}"><img src="{{p.main_image.url}}" alt=""></a>
+                    </div>
+                    <div class="property-desc">
+                        <h3>{{p.price}}</h3>
+                        <a href="{% url 'realestate-page' p.slug %}"><h4>{{p.title}}</h4></a>
+                        <p>{{p.sub_title}}</p>
+                        <div class="buttons">
+                            <span>
+                                <i class="fa-solid fa-table-cells-large"></i>&nbsp; {{p.area}}
+                            </span>
+                            <a href="{% url 'realestate-page' p.slug %}">
+                                <button>View Property</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- PROPERTIES END  -->
+
+<!-- GALLERY START  -->
+<section class="gallery-section">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <h3 data-aos="flip-left" data-aos-offset="30">Gallery</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+        </div>
+        <div class="gallery-desc"> 
+            <div class="gallery-index">
+                {% for g in gallery %}
+                <div class="image image{{forloop.counter}}" data-aos="fade-up" data-aos-offset="40">
+                    <img src="{{g.main_image.url}}" alt="">
+                    <div class="img-view-icon">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                    <div class="img-txt">
+                        <h3>{{g.title}}</h3>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="preview-box">
+                <div class="details">
+                    <span class="title">Image <p class="current-img"></p> of <p class="total-img"></p></span>
+                    <span class="icon fa-regular fa-circle-xmark"></span>
+                </div>
+                <div class="image-box">
+                    <div class="sli pre"><i class="fa-solid fa-angle-left"></i></div>
+                    <div class="sli nex"><i class="fa-solid fa-angle-right"></i></div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </div>
+</section>
+<!-- GALLERY END  -->
+
+<!-- NEWS START  -->
+<section class="news-section">
+    <div class="news-container">
+        <div class="news-header">
+            <h3>Our Recent News</h3>
+            <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+        </div>
+        <div class="news-boxes">
+            {% for b in blogs %}
+            <div class="outer-box" data-aos="fade-up" data-aos-offset="50">
+                <div class="box">   
+                    <div class="news-img">
+                        <a href="{% url 'blog-post' b.slug %}"><img src="{{b.main_image.url}}" alt=""></a>
+                    </div>
+                    <div class="news-desc">
+                        <div class="top-desc">
+                            <p>Posted: {{b.updated_at}}</p>
+                            <p style="text-transform: capitalize">#
+                                {% with b.categories|split:" " as blog_categories %}
+                                {% for cl in blog_categories %}
+                                {% if forloop.counter is 1 %} {{cl}}{% endif%}
+                                {% endfor %}
+                                {% endwith %}
+                            </p>
+                        </div>
+                        <a href="{% url 'blog-post' b.slug %}"><h3>{{b.title}}</h3></a>
+                        <h4>{{b.sub_title|truncatechars:100}}</h4>               
+                        <div class="buttons">
+                            <a href="{% url 'blog-post' b.slug %}">
+                                <button>Read More</button>
+                            </a>
+                            <span>
+                                <i class="fa-solid fa-share-nodes"></i>
+                                <div class="news-share-icons">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={% url 'blog-post' b.slug %}"><i class="fa-brands fa-square-facebook"></i></a>
+                                    <a href="https://pinterest.com/pin/create/button/?url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-pinterest"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text={{b.title}}&url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-linkedin"></i></a>
+                                    <a href="https://www.reddit.com/submit?url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-reddit"></i></a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- NEWS END  -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

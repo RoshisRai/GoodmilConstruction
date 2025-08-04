@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}{{project.title}} | Goodmil Construction{% endblock title %}
+{% block projectsactive %}active{% endblock projectsactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/projectpage.css' %}">
+<meta name="keywords" content="{% for c in project.category.all %}{{c.name}}, {% endfor %}">
+<meta name="description" content="Project Client: {{project.client}}, Project Location: {{project.location}}, Project Completion Date: {{project.completion_date}}">
+<meta name="robots" content="nofollow" />
+<meta name="og:title" content="{{project.title}}" />
+<meta name="og:description" content="Project Client: {{project.client}}, Project Location: {{project.location}}, Project Completion Date: {{project.completion_date}}" />
+<meta name="og:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+<meta name='og:type' content="website">
+<meta name='og:site_name' content="Goodmil Construction">
+<meta name='og:url' content="https://site.com/">
+<meta name="twitter:title" content="{{project.title}}" />
+<meta name="twitter:description" content="Project Client: {{project.client}}, Project Location: {{project.location}}, Project Completion Date: {{project.completion_date}}" />
+<meta name="twitter:image" content="https://site.com/static/img/goodmil-logo.jpg" />
+{% endblock additionalheader %}
+
+{% block maincontent %}
+
+    <!-- PAGE MAIN IMAGE START  -->
+    <section class="page-image" id="add-margin">
+        <div class="page-image-container">
+            <h1>Chhaya Center - Thamel</h1>
+            <div class="page-location">
+                <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // <a href="{% url 'projects' %}">PROJECTS</a>&nbsp; // Chhaya Center - Thamel
+            </div>
+        </div>
+    </section>
+    <!-- PAGE MAIN IMAGE END  -->
+
+    <!-- BLOG PAGE FIRST START  -->
+    <section class="project-page-first">
+        <div class="project-page-first-container">
+            <div class="project-main-navigation">
+                <div class="prev-button">
+                    {% if prev_project_slug is not None %}
+                        <a href="{% url 'project-page' prev_project_slug %}"><button><i class="fa-solid fa-caret-left"></i> &nbsp;PREVIOUS</button></a>
+                    {% endif %}
+                </div>
+                <div class="next-button">
+                    {% if next_project_slug is not None %}
+                        <a href="{% url 'project-page' next_project_slug %}"><button>NEXT &nbsp;<i class="fa-solid fa-caret-right"></i></button></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="project-page-first-body">
+                <div class="project-main">
+                    <div class="project-main-img">
+                        <img src="{{project.main_image.url}}" alt="">
+                    </div>
+                    <div class="project-main-desc">
+                        <div class="project-main-title">
+                            <h1>{{project.title}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-sidebar">
+                    <div class="project-major-details">
+                        <div class="project-client">
+                            <h2><i class="fa-solid fa-briefcase"></i> &nbsp;Client</h2>
+                            <p>{{project.client}}</p>
+                        </div>
+                        <div class="project-location">
+                            <h2><i class="fa-solid fa-location-dot"></i> &nbsp;Location</h2>
+                            <p>{{project.location}}</p>
+                        </div>
+                        <div class="project-completion-date">
+                            <h2><i class="fa-solid fa-calendar-days"></i> &nbsp;Completion Date</h2>
+                            {% if project.completion_date %}
+                            <p>{{project.completion_date}}</p>
+                            {% else %}
+                            <p>On going...</p>
+                            {% endif %}
+                        </div>
+                        {% if project.project_budget %}
+                        <div class="project-budjet">
+                            <h2><i class="fa-regular fa-money-bill-1"></i> &nbsp;Project Budget</h2>
+                            <p>{{project.project_budget}}</p>
+                        </div>
+                        {% endif %}
+                        <div class="project-category">
+                            <h2><i class="fa-solid fa-cubes"></i> &nbsp;Category</h2>
+                            <p>
+                                {% for c in project.category.all %}
+                                {% if forloop.last %}
+                                <span>{{c.name}}</span>
+                                {% else %}
+                                <span>{{c.name}}</span>, 
+                                {% endif %}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-page-first-desc">
+                <div class="project-main-desc">
+                    <div class="project-main-body">
+                        {{project.content|safe}}
+                    </div>
+                    <div class="project-main-navigation">
+                        <div class="prev-button">
+                            {% if prev_project_slug is not None %}
+                                <a href="{% url 'project-page' prev_project_slug %}"><button><i class="fa-solid fa-caret-left"></i> &nbsp;PREVIOUS</button></a>
+                            {% endif %}
+                        </div>
+                        <ul class="share-icons">
+                            <span>Share &nbsp;&nbsp; <i class="fa-solid fa-share-nodes"></i></span>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={% url 'project-page' project.slug %}"><i class="fa-brands fa-square-facebook"></i></a>
+                            <a href="https://pinterest.com/pin/create/button/?url={% url 'project-page' project.slug %}"><i class="fa-brands fa-pinterest"></i></a>
+                            <a href="https://twitter.com/intent/tweet?text={{project.title}}&url={% url 'project-page' project.slug %}"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={% url 'project-page' project.slug %}"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.reddit.com/submit?url={% url 'project-page' project.slug %}"><i class="fa-brands fa-reddit"></i></a>
+                        </ul>
+                        <div class="next-button">
+                            {% if next_project_slug is not None %}
+                                <a href="{% url 'project-page' next_project_slug %}"><button>NEXT &nbsp;<i class="fa-solid fa-caret-right"></i></button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PROJECT PAGE FIRST END  -->
+
+    <!-- RELATED PROJECTS START -->
+    <section class="related-project">
+        <div class="related-project-container">
+            <div class="related-project-header">
+                <h3>Recent Projects</h3>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+            </div>
+            <ul class="projects-first-boxes filter-item">
+                {% for p in recent_projects %}
+                <a href="{% url 'project-page' p.slug %}" class="outer-box" data-item="architecture">
+                    <li>
+                        <div class="box">   
+                            <div class="projects-first-img">
+                                <img src="{{p.main_image.url}}" alt="">
+                            </div>
+                            <div class="img-view-icon">
+                                <h3>{{p.title}}</h3>
+                            </div>
+                            <div class="projects-first-desc">
+                                <p>{{p.location}}</p>
+                                <h3>{{p.title}}</h3>
+                            </div>
+                        </div>
+                    </li>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <!-- RELATED PROJECTS END -->
+
+{% include 'home/components/clients.html' %}
+{% include 'home/components/contact.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}

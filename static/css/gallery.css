@@ -1,0 +1,277 @@
+/* PAGE MAIN IMAGE START  */
+.page-image{
+    width: 100%;
+    height: 20rem;
+    background: var(--light-hover) url("../img/hero3.png") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-image::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.542);
+	z-index: 3;
+}
+.page-image-container{
+    width: 80%;
+    z-index: 4;
+}
+.page-image-container h1{
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+}
+.page-image-container h2{
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--light);
+  margin-bottom: 1rem;
+}
+.page-image-container .page-location{
+    color: var(--light-hover);
+}
+.page-image-container .page-location a{
+    color: var(--secondary-color);
+}
+@media screen and (max-width: 1200px){
+  .page-image{
+      height: 16rem;
+  }
+}
+@media screen and (max-width: 992px){
+  .page-image-container{
+      width: 90%;
+  }
+}
+@media screen and (max-width: 768px){
+  .page-image-container{
+      width: 95%;
+  }
+}
+/* PAGE MAIN IMAGE END  */
+
+/* GALLERY FIRST START  */
+.gallery-page-first{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 3rem 0 6rem 0;
+}
+.gallery-page-first-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+.gallery-page-first-header{
+    text-align: center;
+}
+.gallery-page-first-header h3{
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: .2rem;
+    text-transform: uppercase;
+}
+.gallery-page-first-header h4{
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    opacity: .6;
+}
+.gallery-page-first-header h4 a{
+    color: var(--primary-color);
+    border-bottom: .09rem solid var(--primary-color);
+    transition: .2s;
+}
+.gallery-page-first-header h4 a:hover{
+    color: var(--primary-color-hover);
+    border-bottom: .09rem solid var(--primary-color-hover);
+}
+.gallery-page-first-header p{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.8rem;
+}
+.gallery-page-first-header p i{
+    font-size: 1.1rem;
+    color: var(--secondary-color-hover);
+}
+.gallery-page-first-header p span{
+    position: relative;
+    margin: 0 2rem;
+    width: 5rem;
+    height: 1rem;
+}
+.gallery-page-first-header p span:first-child::before,
+.gallery-page-first-header p span:last-child::before{
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    height: .06rem;
+    width: 100%;
+    background: #888;
+}
+.gallery-page-first-header p span:first-child::after,
+.gallery-page-first-header p span:last-child::after{
+    content: "";
+    position: absolute;
+    top: 60%;
+    left: 0;
+    height: .06rem;
+    width: 100%;
+    background: #888;
+}
+.gallery-page-first-header .filter-menu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.gallery-page-first-header .filter-menu li{
+    padding: .4rem .8rem;
+    background: var(--light-hover);
+    margin: 0 .4rem;
+    color: var(--dark);
+    transition: .2s;
+    text-transform: uppercase;
+    font-size: .9rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: .5rem;
+}
+.gallery-page-first-header .filter-menu li:hover,
+.gallery-page-first-header .filter-menu li.current{
+    background: var(--secondary-color-hover);
+    color: var(--light);
+}
+
+.gallery-boxes{
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* justify-content: space-between; */
+  width: 100%;
+}
+.gallery-boxes .outer-box{
+  opacity: 1;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.gallery-boxes .box{
+  width: 100%;
+  box-shadow: 2px 2px 1.4rem rgba(0, 0, 0, 0.11);
+  border-radius: .3rem;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+}
+.gallery-img{
+  width: 100%;
+}
+.gallery-img::before{
+  content: "";
+  position: absolute;
+  height: 200%;
+  width: 200%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-image: linear-gradient(to bottom right, rgba(147, 236, 79, 0.288), rgba(80, 188, 129, 0.359) ,rgba(0, 128, 0, 0.321)),
+  linear-gradient(to top right, rgba(0, 0, 0, 0.775) 30%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: 1s;
+  z-index: 9;
+  color: #111;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.gallery-boxes .outer-box:hover .gallery-img::before{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.gallery-boxes .outer-box .img-view-icon{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--light);
+  z-index: 10;
+  opacity: 0;
+  scale: 0;
+  transition: .3s .2s;
+  transform-origin: left;
+  text-transform: uppercase;
+}
+.gallery-boxes .outer-box:hover .img-view-icon{
+  opacity: 1;
+  scale: 1;
+}
+.gallery-boxes .outer-box .gallery-img img{
+  scale: 1.1;
+}
+.gallery-desc{
+  padding: 1.5rem 1.2rem;
+  position: absolute;
+  left: 0;
+  bottom: -.5rem;
+  width: 100%;
+  transition: .3s;
+  z-index: 10;
+  color: var(--dark);
+  opacity: 0;
+}
+.gallery-boxes .box:hover .gallery-desc{
+  color: var(--light);
+  opacity: 1;
+  bottom: 0;
+}
+.gallery-desc p{
+  font-size: .8rem;
+  font-weight: 600;
+  opacity: .8;
+  text-align: justify;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+}
+.gallery-desc p::after{
+  content: "";
+  width: 3rem;
+  height: .15rem;
+  position: absolute;
+  bottom: -.2rem;
+  left: 0%;
+  background: var(--secondary-color);
+  transition: .3s;
+  border-radius: .2rem;
+}
+.gallery-desc h3{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+@media screen and (max-width: 992px){
+  .gallery-page-first-container{
+    width: 90%;
+  }
+  .gallery-page-first-header .filter-menu li{
+    margin-bottom: .5rem;
+  }
+}
+@media screen and (max-width: 768px){
+  .gallery-page-first-container{
+    width: 95%;
+  }
+}
+/* GALLERY FIRST END  */

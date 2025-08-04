@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}Blog Search Term | Goodmil Construction{% endblock title %}
+{% block blogactive %}active{% endblock blogactive %}
+{% block searchactive %}active{% endblock searchactive %}
+
+{% block additionalheader %}
+<link rel="stylesheet" href="{% static 'css/blogsearch.css' %}">
+{% endblock additionalheader %}
+
+{% block maincontent %}
+<!-- PAGE MAIN IMAGE START  -->
+<section class="page-image" id="add-margin">
+    <div class="page-image-container">
+        <h1>Search Results For: &nbsp; {{query|truncatechars:30}}</h1>
+        <div class="page-location">
+            <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>&nbsp; // <a href="{% url 'blog' %}">BLOG</a> // {{query|truncatechars:30}}
+        </div>
+    </div>
+</section>
+<!-- PAGE MAIN IMAGE END  -->
+
+<!-- BLOG SEARCH START  -->
+<section class="blog-search">
+    <div class="blog-search-container">
+        <div class="blog-search-header">
+            <div class="blog-search-title">
+                <h3>Search Results</h3>
+                <p><span></span> <i class="fa-solid fa-cubes"></i> <span></span></p>
+            </div>
+        </div>
+        <div class="blog-search-body">
+            {% if blogs %}
+            <div class="blog-list">
+                {% for b in blogs %}
+                <div class="outer-box" data-aos="fade-up" data-aos-offset="20">
+                    <div class="box">   
+                        <div class="news-img">
+                            <a href="{% url 'blog-post' b.slug %}"><img src="{{b.main_image.url}}" alt=""></a>
+                        </div>
+                        <div class="news-desc">
+                            <div class="top-desc">
+                                <p>Posted: {{b.updated_at}}</p>
+                                <p style="text-transform: capitalize">#
+                                    {% with b.categories|split:" " as blog_categories %}
+                                    {% for cl in blog_categories %}
+                                    {% if forloop.counter is 1 %} {{cl}}{% endif%}
+                                    {% endfor %}
+                                    {% endwith %}
+                                </p>
+                            </div>
+                            <a href="{% url 'blog-post' b.slug %}"><h3>{{b.title}}</h3></a>
+                            <h4>{{b.sub_title|truncatechars:100}}</h4>                  
+                            <div class="buttons">
+                                <a href="{% url 'blog-post' b.slug %}">
+                                    <button>Read More</button>
+                                </a>
+                                <span>
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    <div class="news-share-icons">
+                                        <div class="news-share-icons">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{SITE_URL}}{% url 'blog-post' b.slug %}"><i class="fa-brands fa-square-facebook"></i></a>
+                                            <a href="https://pinterest.com/pin/create/button/?url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-pinterest"></i></a>
+                                            <a href="https://twitter.com/intent/tweet?text={{b.title}}&url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-twitter"></i></a>
+                                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-linkedin"></i></a>
+                                            <a href="https://www.reddit.com/submit?url={% url 'blog-post' b.slug %}"><i class="fa-brands fa-reddit"></i></a>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="no-blog-list">
+                <h3>No Search Results</h3>
+                <h4>Your Search - {{query|truncatechars:70}} - Didn't matched any blog posts.</h4>
+                <h4>Suggestions:</h4>
+                <ul>
+                    <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Make sure that all words are spelled correctly.</li>
+                    <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try different keywords.</li>
+                    <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try more general keywords.</li>
+                    <li><i class="fa-sharp fa-solid fa-circle-exclamation"></i> &nbsp; Try fewer keywords.</li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<!-- BLOG SEARCH END  -->
+
+{% include 'home/components/clients.html' %}
+{% endblock maincontent %}
+
+{% block additionaljs %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'js/clients.js' %}"></script>
+{% endblock additionaljs %}
