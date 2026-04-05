@@ -1,0 +1,9 @@
+# Ignore the .env file which contains sensitive environment variables
+.env
+
+
+
+
+
+
+
